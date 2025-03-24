@@ -170,51 +170,7 @@
     </div>
 
     <!-- Unity Build Scripts -->
-    <script>
-        var buildUrl = "Build";
-        var config = {
-            dataUrl: buildUrl + "/website-unity.data.gz",
-            frameworkUrl: buildUrl + "/website-unity.framework.js.gz",
-            codeUrl: buildUrl + "/website-unity.wasm.gz",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "DefaultCompany",
-            productName: "website-unity",
-            productVersion: "0.1",
-            showBanner: true
-        };
-
-        var container = document.querySelector("#unity-container");
-        var canvas = document.querySelector("#unity-canvas");
-        var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#unity-progress-bar-full");
-
-        var script = document.createElement("script");
-        script.src = buildUrl + "/website-unity.loader.js";
-        script.onload = () => {
-            console.log("Unity loader script loaded");
-            createUnityInstance(canvas, config, (progress) => {
-                console.log("Loading progress:", progress);
-                progressBarFull.style.width = 100 * progress + "%";
-            }).then((instance) => {
-                unityInstance = instance;
-                loadingBar.style.display = "none";
-                console.log("Unity instance created successfully");
-            }).catch((error) => {
-                console.error("Unity instance creation failed:", error);
-            });
-        };
-        script.onerror = (err) => {
-            console.error("Error loading Unity loader script:", err);
-        };
-        document.body.appendChild(script);
-
-        // Remove the existing script tag from head
-        var existingScript = document.querySelector('head script[src*="website-unity.loader.js"]');
-        if (existingScript) {
-            existingScript.remove();
-        }
-    </script>
-
+  
     <!-- Your camera script -->
     <script src="camera.js"></script>
 </body>
