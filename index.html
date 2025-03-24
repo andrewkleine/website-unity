@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Removal Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="camera-section">
+            <div class="camera-container">
+                <video id="video" autoplay></video>
+                <div class="oval-guide"></div>
+            </div>
+            <div class="controls">
+                <button id="captureBtn">Take Photo</button>
+                <button id="removeBackgroundBtn">Remove Background</button>
+                <button id="uploadBtn">Send to KnockOut VR</button>
+            </div>
+            <div class="preview-container">
+                <div class="preview-label">Captured Photo</div>
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="upload-status" id="uploadStatus"></div>
+        </div>
+    </div>
+
+   
+    <script src="camera.js"></scriptsrc> 
+</body>
+</html>
