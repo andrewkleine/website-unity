@@ -6,29 +6,47 @@ class BackgroundRemovalApp {
         this.removeBackgroundBtn = document.getElementById('removeBackgroundBtn');
         this.uploadBtn = document.getElementById('uploadBtn');
         this.statusBox = document.getElementById('uploadStatus');
-        
         this.ctx = this.canvas.getContext('2d');
         this.streaming = false;
         this.ws = null;
-
-        // Remove.bg API key
         this.apiKey = 'U3MKqqNUbieZ9bQhbKfGXBmM';
-        
-        // Oval dimensions
         this.ovalWidth = 300;
         this.ovalHeight = 400;
-        
-        this.init();
+
+        this.setup();
     }
 
-    async init() {
+    setup() {
+        // Ensure everything starts after DOM is ready
+        window.addEventListener('load', () => {
+            this.initCamera();
+            this.initWebSocket();
+            this.addEventListeners();
+        });
+    }
+
+    async initCamera() {
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             this.video.srcObject = stream;
             this.video.play();
+            console.log("✅ Camera started successfully");
         } catch (err) {
-            console.error('Error accessing camera:', err);
+            console.error('❌ Camera access failed:', err);
+            alert("Camera access failed: " + err.message);
         }
+    }
+
+    initWebSocket() {
+        this.ws = new WebSocket('ws://127.0.0.1:9090/image');
+        this.ws.onopen = () => console.log('✅ Connected to Unity WebSocket server');
+        this.ws.onerror = () => console.warn('⚠️ WebSocket connection to Unity failed');
+    }
+
+    addEventListeners() {
+        this.captureBtn.addEventListener('click', () => this.captureImage());
+        this.removeBackgroundBtn.addEventListener('click', () => this.removeBackground());
+        this.uploadBtn.addEventListener('click', () => this.sendViaWebSocket());
 
         this.video.addEventListener('canplay', () => {
             if (!this.streaming) {
@@ -37,37 +55,17 @@ class BackgroundRemovalApp {
                 this.streaming = true;
             }
         });
-
-        this.captureBtn.addEventListener('click', () => this.captureImage());
-        this.removeBackgroundBtn.addEventListener('click', () => this.removeBackground());
-        this.uploadBtn.addEventListener('click', () => this.sendViaWebSocket());
-
-        this.connectToUnityWebSocket();
-    }
-
-    connectToUnityWebSocket() {
-        this.ws = new WebSocket('ws://localhost:9090/image');
-        this.ws.onopen = () => console.log('✅ Connected to Unity WebSocket server');
-        this.ws.onerror = () => {
-            console.warn('❌ Could not connect to Unity WebSocket server');
-            this.statusBox.textContent = 'WebSocket not connected!';
-            this.statusBox.className = 'upload-status error';
-        };
-        this.ws.onclose = () => console.warn('⚠️ Unity WebSocket closed');
     }
 
     captureImage() {
-        const videoWidth = this.video.videoWidth;
-        const videoHeight = this.video.videoHeight;
-        const canvasWidth = this.canvas.width;
-        const canvasHeight = this.canvas.height;
-
-        this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        const cw = this.canvas.width;
+        const ch = this.canvas.height;
+        this.ctx.clearRect(0, 0, cw, ch);
         this.ctx.save();
         this.ctx.beginPath();
-        this.ctx.ellipse(canvasWidth / 2, canvasHeight / 2, this.ovalWidth / 2, this.ovalHeight / 2, 0, 0, Math.PI * 2);
+        this.ctx.ellipse(cw / 2, ch / 2, this.ovalWidth / 2, this.ovalHeight / 2, 0, 0, Math.PI * 2);
         this.ctx.clip();
-        this.ctx.drawImage(this.video, 0, 0, canvasWidth, canvasHeight);
+        this.ctx.drawImage(this.video, 0, 0, cw, ch);
         this.ctx.restore();
         this.statusBox.textContent = '';
     }
@@ -104,7 +102,7 @@ class BackgroundRemovalApp {
             this.statusBox.className = 'upload-status success';
 
         } catch (error) {
-            console.error('Error removing background:', error);
+            console.error(error);
             this.statusBox.textContent = 'Failed to remove background.';
             this.statusBox.className = 'upload-status error';
         } finally {
@@ -125,7 +123,5 @@ class BackgroundRemovalApp {
     }
 }
 
-// Initialize when page loads
-window.onload = () => {
-    new BackgroundRemovalApp();
-};
+// Initialize the app
+new BackgroundRemovalApp();
