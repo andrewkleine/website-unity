@@ -7,11 +7,12 @@ const removeButton = document.getElementById('removeBackgroundBtn');
 let ws;
 
 // Connect to Unity WebSocket server
-function connectToUnity() {
-    ws = new WebSocket('ws://localhost:9090/image');
-    ws.onopen = () => console.log('Connected to Unity WebSocket server');
-    ws.onerror = () => alert('Could not connect to Unity. Is it running?');
-}
+// function connectToUnity() {
+//     ws = new WebSocket('ws://localhost:9090/image');
+//     ws.onopen = () => console.log('Connected to Unity WebSocket server');
+//     ws.onerror = () => alert('Could not connect to Unity. Is it running?');
+// }
+// window.onload = connectToUnity;
 
 // Start webcam once page loads
 navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
