@@ -79,6 +79,15 @@ removeButton.addEventListener('click', async () => {
         removeButton.disabled = false;
         removeButton.textContent = 'Remove Background';
     }
+    if (location.protocol !== 'https:') {
+    alert("This page is not HTTPS! Camera won't work.");
+}
+
+navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    console.log('Camera stream started!');
+}).catch(err => {
+    alert("Camera access failed: " + err.message);
+});
 });
 
 // Connect WebSocket when window loads
