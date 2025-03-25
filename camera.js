@@ -82,4 +82,10 @@ const canvas = document.getElementById('canvas');
         removeButton.disabled = false;
         removeButton.textContent = 'Remove Background';
     }
+                navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    video.srcObject = stream;
+    video.play();
+}).catch(err => {
+    alert("Camera access failed: " + err.message);
+});
 });
