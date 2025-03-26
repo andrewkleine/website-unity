@@ -79,14 +79,15 @@ button:disabled {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 400px;
-    border: 3px dashed rgba(255, 255, 255, 0.8);
-    border-radius: 50% / 60%;
+    width: 300px; /* or adjust to fit your camera view */
+    height: auto;
+    background: url('images/body-outline.png') no-repeat center center;
+    background-size: contain;
     pointer-events: none;
     z-index: 10;
-    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
 }
+
 .preview-container {
     margin-top: 20px;
 }
