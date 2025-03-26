@@ -74,19 +74,88 @@ button:disabled {
     display: block;
 }
 /* Oval overlay styles */
-.oval-guide {
+.body-guide {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px; /* or adjust to fit your camera view */
-    height: auto;
-    background: url('images/body-outline.png') no-repeat center center;
-    background-size: contain;
     pointer-events: none;
     z-index: 10;
-    opacity: 0.9;
 }
+
+.head {
+    width: 60px;
+    height: 80px;
+    border: 2px dashed white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.torso {
+    width: 60px;
+    height: 150px;
+    border: 2px dashed white;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.left-arm,
+.right-arm {
+    width: 100px;
+    height: 20px;
+    border: 2px dashed white;
+    position: absolute;
+    top: 100px;
+}
+
+.left-arm {
+    left: calc(50% - 130px);
+}
+
+.right-arm {
+    right: calc(50% - 130px);
+}
+
+.left-hand,
+.right-hand {
+    width: 30px;
+    height: 30px;
+    border: 2px dashed white;
+    border-radius: 50%;
+    position: absolute;
+    top: 95px;
+}
+
+.left-hand {
+    left: calc(50% - 170px);
+}
+
+.right-hand {
+    right: calc(50% - 170px);
+}
+
+.left-leg,
+.right-leg {
+    width: 30px;
+    height: 120px;
+    border: 2px dashed white;
+    position: absolute;
+    top: 230px;
+}
+
+.left-leg {
+    left: calc(50% - 20px);
+}
+
+.right-leg {
+    left: calc(50% + 20px);
+}
+
 
 .preview-container {
     margin-top: 20px;
