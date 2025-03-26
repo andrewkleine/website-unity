@@ -4,20 +4,24 @@ body {
   padding: 20px;
   background: #f0f0f0;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .camera-section {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .camera-container {
   position: relative;
   width: 640px;
   height: 480px;
   margin: 10px auto;
 }
+
 #video {
   position: absolute;
   top: 0;
@@ -26,6 +30,7 @@ body {
   height: 100%;
   border: 2px solid #333;
 }
+
 #canvas {
   width: 300px;
   height: 300px;
@@ -34,9 +39,11 @@ body {
   display: block;
   background: #fff;
 }
+
 .controls {
   margin: 20px 0;
 }
+
 button {
   padding: 10px 20px;
   margin: 5px;
@@ -47,41 +54,49 @@ button {
   border: none;
   border-radius: 4px;
 }
+
 button:hover {
   background: #1976D2;
 }
+
 button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
+
 #unityContainer {
   margin-top: 20px;
 }
+
 .upload-status {
   margin-top: 10px;
   padding: 10px;
   display: none;
 }
+
 .upload-status.success {
   background-color: #dff0d8;
   color: #3c763d;
   display: block;
 }
+
 .upload-status.error {
   background-color: #f2dede;
   color: #a94442;
   display: block;
 }
+
 .preview-container {
   margin-top: 20px;
 }
+
 .preview-label {
   font-size: 16px;
   color: #333;
   margin-bottom: 10px;
 }
 
-/* Geometric Body Guide */
+/* ===== Enlarge Body Shape Guide Overlay ===== */
 .body-guide {
   position: absolute;
   top: 0;
@@ -98,21 +113,21 @@ button:disabled {
   position: absolute;
 }
 
-/* Head */
+/* Head (larger) */
 .head {
-  width: 60px;
-  height: 80px;
+  width: 90px;
+  height: 120px;
   border-radius: 50%;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Torso */
+/* Torso (longer & wider) */
 .torso {
-  width: 60px;
-  height: 150px;
-  top: 100px;
+  width: 90px;
+  height: 200px;
+  top: 140px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -120,42 +135,42 @@ button:disabled {
 /* Arms */
 .left-arm,
 .right-arm {
-  width: 100px;
-  height: 20px;
-  top: 120px;
+  width: 150px;
+  height: 30px;
+  top: 160px;
 }
 .left-arm {
-  left: calc(50% - 130px);
+  left: calc(50% - 200px);
 }
 .right-arm {
-  left: calc(50% + 30px);
+  left: calc(50% + 50px);
 }
 
 /* Hands */
 .left-hand,
 .right-hand {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  top: 115px;
+  top: 155px;
 }
 .left-hand {
-  left: calc(50% - 170px);
+  left: calc(50% - 250px);
 }
 .right-hand {
-  left: calc(50% + 100px);
+  left: calc(50% + 160px);
 }
 
 /* Legs */
 .left-leg,
 .right-leg {
-  width: 30px;
-  height: 120px;
-  top: 260px;
+  width: 40px;
+  height: 160px;
+  top: 360px;
 }
 .left-leg {
-  left: calc(50% - 35px);
+  left: calc(50% - 50px);
 }
 .right-leg {
-  left: calc(50% + 5px);
+  left: calc(50% + 10px);
 }
