@@ -1,167 +1,161 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f0f0f0;
 }
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .camera-section {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 .camera-container {
-    position: relative;
-    width: 640px;
-    height: 480px;
-    margin: 10px auto;
+  position: relative;
+  width: 640px;
+  height: 480px;
+  margin: 10px auto;
 }
 #video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #333;
 }
 #canvas {
-    width: 300px;
-    height: 300px;
-    border: 2px solid #333;
-    margin: 10px;
-    display: block;
-    margin: 20px auto;
-    background: #fff;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #333;
+  margin: 20px auto;
+  display: block;
+  background: #fff;
 }
 .controls {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    background: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
 button:hover {
-    background: #1976D2;
+  background: #1976D2;
 }
 button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 #unityContainer {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .upload-status {
-    margin-top: 10px;
-    padding: 10px;
-    display: none;
+  margin-top: 10px;
+  padding: 10px;
+  display: none;
 }
 .upload-status.success {
-    background-color: #dff0d8;
-    color: #3c763d;
-    display: block;
+  background-color: #dff0d8;
+  color: #3c763d;
+  display: block;
 }
 .upload-status.error {
-    background-color: #f2dede;
-    color: #a94442;
-    display: block;
+  background-color: #f2dede;
+  color: #a94442;
+  display: block;
 }
-/* Oval overlay styles */
-.body-guide {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 10;
-}
-
-.head {
-    width: 60px;
-    height: 80px;
-    border: 2px dashed white;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.torso {
-    width: 60px;
-    height: 150px;
-    border: 2px dashed white;
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.left-arm,
-.right-arm {
-    width: 100px;
-    height: 20px;
-    border: 2px dashed white;
-    position: absolute;
-    top: 100px;
-}
-
-.left-arm {
-    left: calc(50% - 130px);
-}
-
-.right-arm {
-    right: calc(50% - 130px);
-}
-
-.left-hand,
-.right-hand {
-    width: 30px;
-    height: 30px;
-    border: 2px dashed white;
-    border-radius: 50%;
-    position: absolute;
-    top: 95px;
-}
-
-.left-hand {
-    left: calc(50% - 170px);
-}
-
-.right-hand {
-    right: calc(50% - 170px);
-}
-
-.left-leg,
-.right-leg {
-    width: 30px;
-    height: 120px;
-    border: 2px dashed white;
-    position: absolute;
-    top: 230px;
-}
-
-.left-leg {
-    left: calc(50% - 20px);
-}
-
-.right-leg {
-    left: calc(50% + 20px);
-}
-
-
 .preview-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .preview-label {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Geometric Body Guide */
+.body-guide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 480px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.body-guide div {
+  border: 2px dashed white;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+  position: absolute;
+}
+
+/* Head */
+.head {
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Torso */
+.torso {
+  width: 60px;
+  height: 150px;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Arms */
+.left-arm,
+.right-arm {
+  width: 100px;
+  height: 20px;
+  top: 120px;
+}
+.left-arm {
+  left: calc(50% - 130px);
+}
+.right-arm {
+  left: calc(50% + 30px);
+}
+
+/* Hands */
+.left-hand,
+.right-hand {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 115px;
+}
+.left-hand {
+  left: calc(50% - 170px);
+}
+.right-hand {
+  left: calc(50% + 100px);
+}
+
+/* Legs */
+.left-leg,
+.right-leg {
+  width: 30px;
+  height: 120px;
+  top: 260px;
+}
+.left-leg {
+  left: calc(50% - 35px);
+}
+.right-leg {
+  left: calc(50% + 5px);
 }
