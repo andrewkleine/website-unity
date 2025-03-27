@@ -24,9 +24,9 @@ window.addEventListener('load', () => {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: {
-        width: { ideal: 640 },
-        height: { ideal: 900 }
-      }
+  width: { ideal: 10002 },
+  height: { ideal: 1200 }  
+}
     });
 
     this.video.srcObject = stream;
