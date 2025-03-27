@@ -67,35 +67,24 @@ captureImage() {
 
     this.ctx.beginPath();
 
-    // Head (top-center oval)
-    this.ctx.ellipse(cw / 2, 150, 75, 100, 0, 0, 2 * Math.PI);
+    // === HEAD (oval) ===
+    this.ctx.ellipse(cw / 2, 130, 75, 100, 0, 0, 2 * Math.PI);
 
-    // Torso (rect below head)
-    this.ctx.moveTo(cw / 2 - 75, 250);
-    this.ctx.lineTo(cw / 2 - 75, 650);
-    this.ctx.lineTo(cw / 2 + 75, 650);
-    this.ctx.lineTo(cw / 2 + 75, 250);
-    this.ctx.closePath();
+    // === BODY (rectangle) ===
+    this.ctx.rect(cw / 2 - 75, 230, 150, 300);
 
-    // Arms (as one big horizontal shape)
-    this.ctx.moveTo(cw / 2 - 500, 310);
-    this.ctx.lineTo(cw / 2 + 500, 310);
-    this.ctx.lineTo(cw / 2 + 500, 370);
-    this.ctx.lineTo(cw / 2 - 500, 370);
-    this.ctx.closePath();
+    // === ARMS (long horizontal bar connected to body) ===
+    this.ctx.rect(cw / 2 - 300, 270, 600, 60);
 
-    // Legs (two side-by-side rectangles)
-    this.ctx.moveTo(cw / 2 - 90, 700);
-    this.ctx.lineTo(cw / 2 - 90, 870);
-    this.ctx.lineTo(cw / 2 - 20, 870);
-    this.ctx.lineTo(cw / 2 - 20, 700);
-    this.ctx.closePath();
+    // === HANDS (circles at ends of arms) ===
+    this.ctx.arc(cw / 2 - 300 - 35, 300, 35, 0, 2 * Math.PI); // left hand
+    this.ctx.arc(cw / 2 + 300 + 35, 300, 35, 0, 2 * Math.PI); // right hand
 
-    this.ctx.moveTo(cw / 2 + 20, 700);
-    this.ctx.lineTo(cw / 2 + 20, 870);
-    this.ctx.lineTo(cw / 2 + 90, 870);
-    this.ctx.lineTo(cw / 2 + 90, 700);
-    this.ctx.closePath();
+    // === LEGS ===
+    // Left leg
+    this.ctx.rect(cw / 2 - 50, 530, 40, 180);
+    // Right leg
+    this.ctx.rect(cw / 2 + 10, 530, 40, 180);
 
     this.ctx.clip();
     this.ctx.drawImage(this.video, 0, 0, cw, ch);
