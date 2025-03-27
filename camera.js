@@ -59,31 +59,43 @@ window.addEventListener('load', () => {
       });
     }
 
- captureImage() {
+captureImage() {
     const cw = this.canvas.width;
     const ch = this.canvas.height;
-
     this.ctx.clearRect(0, 0, cw, ch);
     this.ctx.save();
 
     this.ctx.beginPath();
 
-    // Head
-    this.ctx.ellipse(cw / 2, 180, 75, 100, 0, 0, 2 * Math.PI);
+    // Head (top-center oval)
+    this.ctx.ellipse(cw / 2, 150, 75, 100, 0, 0, 2 * Math.PI);
 
-    // Torso
-    this.ctx.rect(cw / 2 - 75, 250, 150, 400);
+    // Torso (rect below head)
+    this.ctx.moveTo(cw / 2 - 75, 250);
+    this.ctx.lineTo(cw / 2 - 75, 650);
+    this.ctx.lineTo(cw / 2 + 75, 650);
+    this.ctx.lineTo(cw / 2 + 75, 250);
+    this.ctx.closePath();
 
-    // Arms (as a wide bar)
-    this.ctx.rect(cw / 2 - 500, 300, 1000, 60);
+    // Arms (as one big horizontal shape)
+    this.ctx.moveTo(cw / 2 - 500, 310);
+    this.ctx.lineTo(cw / 2 + 500, 310);
+    this.ctx.lineTo(cw / 2 + 500, 370);
+    this.ctx.lineTo(cw / 2 - 500, 370);
+    this.ctx.closePath();
 
-    // Hands
-    this.ctx.arc(cw / 2 - 500 - 35, 330, 35, 0, 2 * Math.PI);
-    this.ctx.arc(cw / 2 + 500 + 35 - 1000, 330, 35, 0, 2 * Math.PI); // right hand
+    // Legs (two side-by-side rectangles)
+    this.ctx.moveTo(cw / 2 - 90, 700);
+    this.ctx.lineTo(cw / 2 - 90, 870);
+    this.ctx.lineTo(cw / 2 - 20, 870);
+    this.ctx.lineTo(cw / 2 - 20, 700);
+    this.ctx.closePath();
 
-    // Legs (adjusted height and position)
-    this.ctx.rect(cw / 2 - 90, 670, 70, 200);
-    this.ctx.rect(cw / 2 + 20, 670, 70, 200);
+    this.ctx.moveTo(cw / 2 + 20, 700);
+    this.ctx.lineTo(cw / 2 + 20, 870);
+    this.ctx.lineTo(cw / 2 + 90, 870);
+    this.ctx.lineTo(cw / 2 + 90, 700);
+    this.ctx.closePath();
 
     this.ctx.clip();
     this.ctx.drawImage(this.video, 0, 0, cw, ch);
