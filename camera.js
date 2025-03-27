@@ -52,49 +52,39 @@ window.addEventListener('load', () => {
       });
     }
 
-    // ✅ Full-frame capture (no oval clipping)
-  captureImage() {
+ captureImage() {
     const cw = this.canvas.width;
     const ch = this.canvas.height;
-    this.ctx.clearRect(0, 0, cw, ch);
 
+    this.ctx.clearRect(0, 0, cw, ch);
     this.ctx.save();
 
     this.ctx.beginPath();
 
-    // Head (ellipse)
+    // Head
     this.ctx.ellipse(cw / 2, 180, 75, 100, 0, 0, 2 * Math.PI);
 
-    // Torso (rectangle)
+    // Torso
     this.ctx.rect(cw / 2 - 75, 250, 150, 400);
 
-    // Left Arm
-    this.ctx.rect(cw / 2 - 500, 300, 400, 60);
+    // Arms (as a wide bar)
+    this.ctx.rect(cw / 2 - 500, 300, 1000, 60);
 
-    // Right Arm
-    this.ctx.rect(cw / 2 + 100, 300, 400, 60);
+    // Hands
+    this.ctx.arc(cw / 2 - 500 - 35, 330, 35, 0, 2 * Math.PI);
+    this.ctx.arc(cw / 2 + 500 + 35 - 1000, 330, 35, 0, 2 * Math.PI); // right hand
 
-    // Left Hand (circle)
-    this.ctx.arc(cw / 2 - 580 + 35, 330, 35, 0, 2 * Math.PI);
+    // Legs (adjusted height and position)
+    this.ctx.rect(cw / 2 - 90, 670, 70, 200);
+    this.ctx.rect(cw / 2 + 20, 670, 70, 200);
 
-    // Right Hand (circle)
-    this.ctx.arc(cw / 2 + 430 + 35, 330, 35, 0, 2 * Math.PI);
-
-    // Left Leg (shorter now)
-    this.ctx.rect(cw / 2 - 90, 700, 70, 200);
-
-    // Right Leg (shorter now)
-    this.ctx.rect(cw / 2 + 20, 700, 70, 200);
-
-    this.ctx.clip(); // apply the silhouette clipping mask
-
-    // Draw video only where shape exists
+    this.ctx.clip();
     this.ctx.drawImage(this.video, 0, 0, cw, ch);
-
     this.ctx.restore();
 
     this.statusBox.textContent = '';
 }
+
 
 
     async removeBackground() {
