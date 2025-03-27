@@ -34,13 +34,13 @@ body {
 }
 
 #canvas {
-  width: 900px;
-  height: 1200px; 
+  width: 640px;
+  height: 900px;
   border: 2px solid #333;
-  margin: 20px auto;
   display: block;
+  margin: 20px auto;
   background: #fff;
-}
+}2
 
 
 .controls {
