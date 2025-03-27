@@ -20,17 +20,24 @@ window.addEventListener('load', () => {
       this.addEventListeners();
     }
 
-    async initCamera() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        this.video.srcObject = stream;
-        this.video.play();
-        console.log("✅ Camera initialized");
-      } catch (err) {
-        console.error('❌ Camera error:', err);
-        alert("Camera error: " + err.message);
+   async initCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        width: { ideal: 640 },
+        height: { ideal: 900 }
       }
-    }
+    });
+
+    this.video.srcObject = stream;
+    this.video.play();
+    console.log("✅ Camera initialized");
+  } catch (err) {
+    console.error('❌ Camera error:', err);
+    alert("Camera error: " + err.message);
+  }
+}
+
 
     initWebSocket() {
       this.ws = new WebSocket('ws://127.0.0.1:9090/image');
