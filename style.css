@@ -15,12 +15,11 @@ body {
   margin-bottom: 20px;
 }
 
-/* Make camera container full width */
 .camera-container {
   position: relative;
   width: 100%;
   max-width: 1200px;
-  height: 900px; /* increased for full-body scaling */
+  height: 900px;
   margin: 10px auto;
 }
 
@@ -99,7 +98,7 @@ button:disabled {
   margin-bottom: 10px;
 }
 
-/* ===== Super-Sized Body Shape Guide (5x scale) ===== */
+/* ===== Super-Sized Body Shape Guide ===== */
 .body-guide {
   position: absolute;
   top: 0;
@@ -116,7 +115,7 @@ button:disabled {
   position: absolute;
 }
 
-/* Scaled Head */
+/* Head */
 .head {
   width: 150px;
   height: 200px;
@@ -126,7 +125,7 @@ button:disabled {
   transform: translateX(-50%);
 }
 
-/* Scaled Torso */
+/* Torso */
 .torso {
   width: 150px;
   height: 400px;
@@ -135,7 +134,7 @@ button:disabled {
   transform: translateX(-50%);
 }
 
-/* Scaled Arms */
+/* Arms */
 .left-arm,
 .right-arm {
   width: 400px;
@@ -149,7 +148,7 @@ button:disabled {
   left: calc(50% + 100px);
 }
 
-/* Scaled Hands */
+/* Hands */
 .left-hand,
 .right-hand {
   width: 70px;
@@ -164,12 +163,12 @@ button:disabled {
   left: calc(50% + 430px);
 }
 
-/* Scaled Legs */
+/* Legs (shorter) */
 .left-leg,
 .right-leg {
   width: 70px;
-  height: 300px;
-  top: 670px;
+  height: 200px;
+  top: 700px;
 }
 .left-leg {
   left: calc(50% - 90px);
