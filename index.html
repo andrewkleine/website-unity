@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Background Removal Tool</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Optional: Ensure container stacking */
+    .camera-container {
+      position: relative;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="camera-section">
+      <div class="camera-container">
+
+        <!-- 🔴 Countdown overlay -->
+        <div id="countdown">10</div>
+
+        <!-- 🔍 Webcam feed -->
+        <video id="video" autoplay></video>
+
+        <!-- 👤 Silhouette overlay -->
+        <div class="body-guide">
+          <div class="head"></div>
+          <div class="torso"></div>
+          <div class="left-arm"></div>
+          <div class="right-arm"></div>
+          <div class="left-leg"></div>
+          <div class="right-leg"></div>
+          <div class="left-hand"></div>
+          <div class="right-hand"></div>
+        </div>
+      </div>
+
+      <!-- 🎮 Buttons -->
+      <div class="controls">
+        <button id="captureBtn">Take Photo</button>
+        <button id="removeBackgroundBtn">Remove Background</button>
+        <button id="uploadBtn">Send to KnockOut VR</button>
+      </div>
+
+      <!-- 📷 Preview output -->
+      <div class="preview-container">
+        <div class="preview-label">Captured Photo</div>
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <!-- ✅ Upload status -->
+      <div class="upload-status" id="uploadStatus"></div>
+    </div>
+
+    <!-- 🧠 Unity Integration -->
+    <div id="unityContainer"></div>
+  </div>
+
+  <!-- 🚀 JS Script -->
+  <script src="camera.js"></script>
+</body>
+</html>
